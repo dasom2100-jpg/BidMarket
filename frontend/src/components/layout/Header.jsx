@@ -24,7 +24,7 @@ function Header() {
     };
 
     fetchCount();
-    const timer = setInterval(fetchCount, 20000);
+    const timer = setInterval(fetchCount, 30000);
     return () => clearInterval(timer);
   }, [isAuthenticated]);
 

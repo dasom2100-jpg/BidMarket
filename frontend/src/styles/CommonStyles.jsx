@@ -13,7 +13,9 @@ export const PageWrapper = styled.div`
   padding: 40px 0;
 `;
 
-export const FlexRow = styled.div`
+export const FlexRow = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['align', 'justify', 'gap', 'wrap'].includes(prop),
+})`
   display: flex;
   align-items: ${({ align }) => align || 'center'};
   justify-content: ${({ justify }) => justify || 'flex-start'};
@@ -21,7 +23,9 @@ export const FlexRow = styled.div`
   flex-wrap: ${({ wrap }) => wrap || 'nowrap'};
 `;
 
-export const Grid = styled.div`
+export const Grid = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['cols', 'gap'].includes(prop),
+})`
   display: grid;
   grid-template-columns: repeat(${({ cols }) => cols || 4}, 1fr);
   gap: ${({ gap }) => gap || '20px'};
@@ -66,7 +70,9 @@ const buttonVariants = {
   `,
 };
 
-export const Button = styled.button`
+export const Button = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['variant', 'fullWidth', 'size'].includes(prop),
+})`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +175,9 @@ export const ErrorText = styled.p`
 
 /* ========== Card ========== */
 
-export const Card = styled.div`
+export const Card = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['hoverable', 'padding'].includes(prop),
+})`
   background: var(--bg-primary);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -198,7 +206,9 @@ const badgeColors = {
   fair:      css`background: #FEF3C7; color: #92400E;`,
 };
 
-export const Badge = styled.span`
+export const Badge = styled.span.withConfig({
+  shouldForwardProp: (prop) => prop !== 'variant',
+})`
   display: inline-flex;
   align-items: center;
   padding: 4px 10px;
@@ -211,7 +221,9 @@ export const Badge = styled.span`
 
 /* ========== Divider ========== */
 
-export const Divider = styled.hr`
+export const Divider = styled.hr.withConfig({
+  shouldForwardProp: (prop) => prop !== 'margin',
+})`
   border: none;
   border-top: 1px solid var(--border);
   margin: ${({ margin }) => margin || '24px 0'};
@@ -219,7 +231,9 @@ export const Divider = styled.hr`
 
 /* ========== Section Title ========== */
 
-export const SectionTitle = styled.h2`
+export const SectionTitle = styled.h2.withConfig({
+  shouldForwardProp: (prop) => prop !== 'size',
+})`
   font-size: ${({ size }) => size || '22px'};
   font-weight: 700;
   color: var(--text-primary);

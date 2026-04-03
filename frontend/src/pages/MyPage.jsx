@@ -111,8 +111,8 @@ function MyPage() {
             </EmptyState>
           ) : (
             <ItemList>
-              {activeTab === 'selling' && data.map((item) => (
-                <ProductItem key={item.id} to={`/products/${item.id}`}>
+              {activeTab === 'selling' && data.map((item, idx) => (
+                <ProductItem key={`sell-${item.id || idx}`} to={`/products/${item.id}`}>
                   <Thumb src={item.thumbnailUrl ? getImageUrl(item.thumbnailUrl) : ''} />
                   <ItemInfo>
                     <ItemTitle>{item.title}</ItemTitle>
@@ -123,8 +123,8 @@ function MyPage() {
                 </ProductItem>
               ))}
 
-              {(activeTab === 'sales' || activeTab === 'purchases') && data.map((item) => (
-                <ProductItem key={item.tradeId} to={`/trades/${item.tradeId}`}>
+              {(activeTab === 'sales' || activeTab === 'purchases') && data.map((item, idx) => (
+                <ProductItem key={`trade-${item.tradeId || idx}`} to={`/trades/${item.tradeId}`}>
                   <Thumb src={item.productThumbnail ? getImageUrl(item.productThumbnail) : ''} />
                   <ItemInfo>
                     <ItemTitle>{item.productTitle}</ItemTitle>
@@ -138,8 +138,8 @@ function MyPage() {
                 </ProductItem>
               ))}
 
-              {activeTab === 'bids' && data.map((item) => (
-                <ProductItem key={item.bidId} to={`/products/${item.productId}`}>
+              {activeTab === 'bids' && data.map((item, idx) => (
+                <ProductItem key={`bid-${item.bidId || idx}`} to={`/products/${item.productId}`}>
                   <Thumb src={item.productThumbnail ? getImageUrl(item.productThumbnail) : ''} />
                   <ItemInfo>
                     <ItemTitle>{item.productTitle}</ItemTitle>

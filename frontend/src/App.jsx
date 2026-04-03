@@ -14,6 +14,9 @@ import ProductRegisterPage from './pages/ProductRegisterPage';
 import MyPage from './pages/MyPage';
 import TradePage from './pages/TradePage';
 import NotificationPage from './pages/NotificationPage';
+import AdminPage from './pages/AdminPage';
+import { NoticeListPage, NoticeDetailPage } from './pages/NoticePage';
+import InquiryPage from './pages/InquiryPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +43,10 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/trades/:tradeId" element={<TradePage />} />
           <Route path="/notifications" element={<NotificationPage />} />
-
-          {/* Step 5에서 추가: 관리자 페이지 */}
-          {/* <Route path="/admin/*" element={<AdminPage />} /> */}
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/notices" element={<NoticeListPage />} />
+          <Route path="/notices/:noticeId" element={<NoticeDetailPage />} />
+          <Route path="/inquiry" element={<InquiryPage />} />
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />

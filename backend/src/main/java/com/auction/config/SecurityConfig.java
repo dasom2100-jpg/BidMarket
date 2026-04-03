@@ -54,6 +54,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/bids/my").authenticated()
                 .requestMatchers(HttpMethod.GET, "/api/bids/product/**").permitAll()
 
+                // 리뷰 조회는 공개
+                .requestMatchers(HttpMethod.GET, "/api/reviews/member/**").permitAll()
+
                 .requestMatchers("/uploads/**").permitAll()
 
                 // === 관리자 전용 ===
