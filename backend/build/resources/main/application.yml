@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: auction-backend
+  profiles:
+#    active: linux
+    active: windows
+
+  # ==============================
+  # MySQL 데이터소스 설정
+  # ==============================
+  datasource:
+    url: jdbc:mysql://localhost:3306/auction_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+
+  # ==============================
+  # JPA / Hibernate 설정
+  # ==============================
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+
+  # ==============================
+  # 파일 업로드 설정
+  # ==============================
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 50MB
+
+# ==============================
+# 서버 설정
+# ==============================
+server:
+  port: 8080
+
+# ==============================
+# JWT 설정
+# ==============================
+jwt:
+  secret: aVeryLongSecretKeyForJWTTokenGenerationThatIsAtLeast256BitsLong2024AuctionPlatform
+  expiration: 86400000
+
+# ==============================
+# 파일 업로드 저장 경로
+# ==============================
+file:
+#  upload-dir: /home/ubuntu/uploads
+  upload-dir: C:/bwork/backend/uploads
+
+# ==============================
+# 로깅 설정
+# ==============================
+logging:
+  level:
+    com.auction: DEBUG
+    org.hibernate.SQL: DEBUG
