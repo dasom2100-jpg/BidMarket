@@ -1,0 +1,24 @@
+# React
+frontend/node_modules/
+frontend/build/
+
+# Spring Boot
+backend/target/
+backend/.gradle/
+backend/*.log
+
+# IDE
+.idea/
+*.iml
+
+# jar
+*.jar
+
+# zip
+*.zip
+
+# node
+/node_modules/
+
+# env
+.env
